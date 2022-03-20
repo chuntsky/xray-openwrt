@@ -3,7 +3,6 @@
 https://github.com/felix-fly/xray-openwrt
 
 
-
 # xray-openwrt
 
 v2ray 官方移除了 xtls，[xray](https://github.com/XTLS/Xray-core) 独立发布，重点关注性能提升，需要的走起~~~
