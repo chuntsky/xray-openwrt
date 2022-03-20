@@ -23,6 +23,14 @@ jobs:
           tar xf upx-3.96-amd64_linux.tar.xz
           mv upx-3.96-amd64_linux/upx .
           rm -rf upx-3.96-amd64_linux*
+          
+          
+      - name: Set variables
+        run: |
+          echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+          echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+        shell: bash          
+          
       - name: build
         run: |
           mkdir tmp
@@ -30,7 +38,7 @@ jobs:
           # Do not use "--depth=1" due to tags
           git clone https://github.com/XTLS/Xray-core.git
           cd Xray-core
-          git checkout tags/v1.5.3
+          git checkout tags/v1.5.4
           cd ..
           wget https://raw.githubusercontent.com/chuntsky/xray-openwrt/master/build.sh
           chmod +x ./build.sh
@@ -46,10 +54,23 @@ jobs:
           ./build.sh linux mipsle
           ./build.sh linux mips64
           ./build.sh linux mips64le
-      - name: Upload artifact
-        uses: "marvinpinto/action-automatic-releases@latest"
+          
+      - name: Release and upload assets
+        uses: softprops/action-gh-release@v0.1.6
         with:
-          repo_token: "${{ secrets.UPLOAD_KEY }}"
+          name: ${{ env.RELEASE_NAME }}
+          tag_name: ${{ env.TAG_NAME }}
+          draft: false
           prerelease: false
           files: |
             bin/*.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.UPLOAD_KEY }} 
+          
+#       - name: Upload artifact
+#         uses: "marvinpinto/action-automatic-releases@latest"
+#         with:
+#           repo_token: "${{ secrets.UPLOAD_KEY }}"
+#           prerelease: false
+#           files: |
+#             bin/*.tar.gz
