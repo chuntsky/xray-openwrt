@@ -52,10 +52,10 @@ jobs:
           ./build.sh linux armv6
           ./build.sh linux armv7
           ./build.sh linux arm64
-          ./build.sh linux mips
-          ./build.sh linux mipsle
-          ./build.sh linux mips64
-          ./build.sh linux mips64le
+           #  ./build.sh linux mips
+           # ./build.sh linux mipsle
+           #  ./build.sh linux mips64
+           #  ./build.sh linux mips64le
           
       - name: Release and upload assets
         uses: softprops/action-gh-release@v0.1.6
