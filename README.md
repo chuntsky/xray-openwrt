@@ -7,7 +7,7 @@ https://github.com/felix-fly/xray-openwrt
 
 v2ray 官方移除了 xtls，[xray](https://github.com/XTLS/Xray-core) 独立发布，重点关注性能提升，需要的走起~~~
 
-* [release下获取xray文件](https://github.com/felix-fly/xray-openwrt/releases)
+* [release下获取xray文件](https://github.com/chuntsky/xray-openwrt/releases)
 
 用法不再赘述，详细可参考之前的 **[openwrt中使用v2ray的简单流程](https://github.com/felix-fly/v2ray-openwrt)**
 
@@ -68,6 +68,7 @@ git clone https://github.com/felix-fly/xray-openwrt.git
 ## 更新记录
 2022-03-21
 * 修改自动编辑文件
+* 增加 最新的 geoip.dat ，geosite.dat 放入编译好的压缩包
 
 2021-03-18
 * 增加 gRPC 协议
