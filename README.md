@@ -66,6 +66,9 @@ git clone https://github.com/felix-fly/xray-openwrt.git
 * [服务端配置](./server.json)
 
 ## 更新记录
+2022-03-21
+* 修改自动编辑文件
+
 2021-03-18
 * 增加 gRPC 协议
 
