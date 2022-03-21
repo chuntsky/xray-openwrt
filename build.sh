@@ -32,6 +32,11 @@ build_v2() {
 packzip() {
   echo ">>> Generating zip package"
   cd $TMP
+  ## down geoip.dat
+  wget $(wget -qO- -t1 -T2 "https://api.github.com/repos/Loyalsoldier/v2ray-rules-dat/releases/latest" | grep "browser_download_url" | grep "geoip.dat" | head -n 1 | awk -F " " '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
+  ## down geosite.dat
+  wget $(wget -qO- -t1 -T2 "https://api.github.com/repos/Loyalsoldier/v2ray-rules-dat/releases/latest" | grep "browser_download_url" | grep "geosite.dat" | head -n 1 | awk -F " " '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
+  
   $UPX --best --lzma *
   tar -czvf $BASE/bin/xray-${GOOS}-${GOARCH}.tar.gz *
   cd $BASE
